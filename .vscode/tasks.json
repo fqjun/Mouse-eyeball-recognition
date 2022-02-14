@@ -1,0 +1,41 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "build",
+			"command": "g++",
+			"args": [
+				"-std=c++11",
+				"-static-libgcc", // 静态链接
+				"-Wall", // 开启额外警告
+
+				"-I","${workspaceFolder}/",
+				"-I","/usr/local/include/",
+				"-I","/usr/local/include/opencv4/",
+				"-I","/usr/local/include/opencv4/opencv2/",
+				"-I","${workspaceFolder}/abstract_object/",
+				"-I","${workspaceFolder}/data_exchange/",
+
+				"-g",
+				"${workspaceFolder}/main.cpp",
+				"${workspaceFolder}/data_exchange/data_exchange.cpp",
+				"-o",
+				"${workspaceFolder}/bin/run.o",//输出的文件名称以及路径
+				"/usr/local/lib/libopencv_*",
+				// "${workspaceFolder}/lib/./libMVSDK.so",
+
+			],
+			"options": {
+				"cwd": "/usr/bin"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		}
+	]
+}
